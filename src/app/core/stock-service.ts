@@ -2,18 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
-import { ProductModel } from './models/product.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
+export class StockService {
   
   httpClient = inject(HttpClient);
 
-    getProducts():Observable<ProductModel[]>{
-    return this.httpClient.get<ProductModel[]>(`${environment.apiUrl}/products/list`);
+  saveStock(data:any):Observable<any>{
+    return this.httpClient.post(`${environment.apiUrl}/stock/save`,data);
   }
-
-
 }

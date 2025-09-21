@@ -37,7 +37,7 @@ protected readonly title = signal('wms-primeng');
       { label: 'Invoices', icon: 'pi pi-file', routerLink: '/sales/invoices' }
     ],
     inventory: [
-      { label: 'Products', icon: 'pi pi-box', routerLink: '/inventory/products' },
+      { label: 'Products', icon: 'pi pi-box', routerLink: '/inventory/product' },
       { label: 'Stock Levels', icon: 'pi pi-database', routerLink: '/inventory/stock' },
       { label: 'Suppliers', icon: 'pi pi-truck', routerLink: '/inventory/suppliers' }
     ],

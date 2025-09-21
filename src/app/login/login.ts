@@ -1,6 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
 import {FormGroup, FormControl, ReactiveFormsModule} from '@angular/forms';
 import { AuthService } from '../auth-service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -8,7 +9,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   selector: 'app-login',
   imports: [CardModule,
     ReactiveFormsModule,
-    ButtonModule
+    ButtonModule,
+    InputTextModule
   ],
   templateUrl: './login.html',
   styleUrl: './login.scss'

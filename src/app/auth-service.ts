@@ -15,9 +15,11 @@ export class AuthService {
 
   constructor(private http: HttpClient) {
     const token = localStorage.getItem('token');
-    if (token) {
+    if (token && !this.isTokenExpired()) {
       const payload = this.decodeJwt(token);
       this.user.set({ username: payload.sub });
+    }else{
+      
     }
   }
 
@@ -37,6 +39,9 @@ export class AuthService {
     this.user.set(null);
   }
 
+  getToken(): string | null {
+    return localStorage.getItem('token');
+  }
   isAuthenticated() {
     return this.user() !== null;
   }
@@ -47,6 +52,19 @@ export class AuthService {
       return JSON.parse(atob(payload));
     } catch {
       return {};
+    }
+  }
+  isTokenExpired(): boolean {
+    const token = this.getToken();
+    if (!token) return true;
+
+    try {
+      const decoded = this.decodeJwt(token);
+      const now = Math.floor(new Date().getTime() / 1000); // current time in seconds
+      return decoded.exp < now;
+    } catch (error) {
+      console.error('Invalid token', error);
+      return true;
     }
   }
 }
